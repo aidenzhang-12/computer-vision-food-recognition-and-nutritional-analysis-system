@@ -21,25 +21,34 @@
 
 This personal project is a computer vision-based food health checker and sorting tool that classifies everyday food items (e.g. eggs, chocolate, bread, pizza, oranges) and evaluates whether they are healthy or unhealthy. In addition to classification, it also displays key nutritional information per 100 grams, including calories, protein, carbohydrates, and fat. 
 
-This project uses a pre-trained teachable machine ([https://teachablemachine.withgoogle.com/train/image](url)) and live webcam input, the program analyzes the food item in real-time and displays the classification result, health assesment, and macros. This project demonstrates how AI can support health-conscious decision-making and make awareness about everyday food choices.
+This project uses a pre-trained teachable machine ([https://teachablemachine.withgoogle.com/train/image](url)) and live webcam input, the program analyzes the food item in real-time and displays the classification result, health assessment, and macros. This project demonstrates how AI can support health-conscious decision-making and raise awareness about everyday food choices.
 
 
 **Motivation & Background**
 ---
 
-Obseity, poor diet, and diet-related diseases are growing public health challenges in Canada and the United States. According to Statistics Canada, in Canada about 30% of adults are estimated to have obseity as of 2022, a rise over the past decades (9% in 1981 to 27.2% in 2018, and now 30%)
+Obesity, poor diet, and diet-related diseases are growing public health challenges in Canada and the United States. According to Statistics Canada, in Canada, about 30% of adults are estimated to have obesity as of 2022, a rise over the past decades (9% in 1981 to 27.2% in 2018, and now 30%)
 
-After the COVID-19 pandemic, obsesity rates in Canada continued to accelerate from
+After the COVID-19 pandemic, obesity rates in Canada continued to accelerate: from 25% in 2009 to 30% in 2022, an increase of about 8 percentage points, with it gaining each year. 
+
+These trends highlight the urgent need for better public awareness about food quality, daily calorie intake, and nutrition. Many people consume foods without fully understanding their nutrient composition, making it harder to make healthier choices in everyday life. 
+
+This project aims to address part of that gap by providing a real-time food identifier + nutrition insight tool. By recognizing common food items (e.g. eggs, chocolate, bread, pizza, oranges) and showing their calories and macronutrients per 100g, this system could be a starting point, with more foods and drinks being expanded into the data set. This system could also help users
+- Become more aware of what they are eating
+- Quickly judge if the food is relatively healthy
+- Use the data to guide better diet decisions
+
+To sum it up, this project uses computer vision and machine learning for nutritional education, with the hope of contributing (small-scale) to better health awareness in our communities.
 
 
 **Features**
 ---
 
-- Live food item detection using webcam and and computer vision
+- Live food item detection using the webcam and computer vision
   
 - Classifies between: Eggs, Chocolate, Bread, Pizza, and Oranges (More can be added)
   
-- Evalutes whether each item is healthy or unhealthy
+- Evaluates whether each item is healthy or unhealthy
   
 - Displays macronutrient breakdown per 100g:
   
@@ -92,7 +101,7 @@ Model Loading
 - A keras .h5 model is loaded
 
 Label Processing
-- labels.txt provides class indicies and food labels (e.g. "Eggs", "Pizza")
+- labels.txt provides class indices and food labels (e.g. "Eggs", "Pizza")
 - Each food is mapped to a health classification and nutritional data via a Pandas DataFrame
 
 Nutrition Data (CSV)
@@ -107,7 +116,7 @@ Nutrition Data (CSV)
 
 Live Classification 
 - Captures webcam frames
-- Runs predictions through model
+- Runs predictions through the model
 - Display classifications results and disposal instructions on screen
 
 
