@@ -127,12 +127,13 @@ Detected: Eggs
 
 Health Status: Healthy
 Per 100g
-- Calories
-- Fat:
-- Carbs:
-- Protein:
+- Calories: 155 cal
+- Fat: 10.0
+- Carbs: 1.1
+- Protein: 13.0
 
-
+**Table of Macros**
+---
 
 
 **Installations**
