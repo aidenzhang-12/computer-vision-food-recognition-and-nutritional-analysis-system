@@ -147,4 +147,7 @@ pip install opencv-contrib-python numpy requests tensorflow pandas h5py
 
 **Sources**
 ---
-[https://www150.statcan.gc.ca/n1/pub/82-003-x/2025002/article/00002-eng.htm](url)
+Research for Motivations & Background: [https://www150.statcan.gc.ca/n1/pub/82-003-x/2025002/article/00002-eng.htm](url)
+Calories & Macros for each Food: [https://fdc.nal.usda.gov/](url)
+
+
