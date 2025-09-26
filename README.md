@@ -19,7 +19,7 @@
 **Overview**
 ---
 
-This personal project is a computer vision-based food health checker and sorting tool that classifies everyday food items (e.g. eggs, chocolate, bread, pizza, oranges) and evaluates whether they are healthy or unhealthy. In addition to classification, it also displays key nutritional information per 100 grams, including calories, protein, carbohydrates, and fat. 
+This personal project is a computer vision-based food health checker and sorting tool that classifies everyday food items (e.g. eggs, chocolate, bread, pizza, apples) and evaluates whether they are healthy or unhealthy. In addition to classification, it also displays key nutritional information per 100 grams, including calories, protein, carbohydrates, and fat. 
 
 This project uses a pre-trained teachable machine ([https://teachablemachine.withgoogle.com/train/image](url)) and live webcam input, the program analyzes the food item in real-time and displays the classification result, health assessment, and macros. This project demonstrates how AI can support health-conscious decision-making and raise awareness about everyday food choices.
 
@@ -33,7 +33,7 @@ After the COVID-19 pandemic, obesity rates in Canada continued to accelerate: fr
 
 These trends highlight the urgent need for better public awareness about food quality, daily calorie intake, and nutrition. Many people consume foods without fully understanding their nutrient composition, making it harder to make healthier choices in everyday life. 
 
-This project aims to address part of that gap by providing a real-time food identifier + nutrition insight tool. By recognizing common food items (e.g. eggs, chocolate, bread, pizza, oranges) and showing their calories and macronutrients per 100g, this system could be a starting point, with more foods and drinks being expanded into the data set. This system could also help users
+This project aims to address part of that gap by providing a real-time food identifier + nutrition insight tool. By recognizing common food items (e.g. eggs, chocolate, bread, pizza, apples) and showing their calories and macronutrients per 100g, this system could be a starting point, with more foods and drinks being expanded into the data set. This system could also help users
 - Become more aware of what they are eating
 - Quickly judge if the food is relatively healthy
 - Use the data to guide better diet decisions
@@ -46,7 +46,7 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 
 - Live food item detection using the webcam and computer vision
   
-- Classifies between: Eggs, Chocolate, Bread, Pizza, and Oranges (More can be added)
+- Classifies between: Eggs, Chocolate, Bread, Pizza, and Apples (More can be added)
   
 - Evaluates whether each item is healthy or unhealthy
   
