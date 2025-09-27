@@ -127,6 +127,8 @@ Live Classification
 Detected: Eggs
 
 Health Status: Healthy
+
+
 Per 100g
 - Calories: 155 cal
 - Fat: 10.0
