@@ -84,7 +84,7 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 
 **Project Structure**
 ---
-food_classifier.py # Python File with full workflow
+foodhealthchecker.py # Python File with full workflow
 
 keras_model.h5 # pre-trained keras classification model (from teachable machine)
 
