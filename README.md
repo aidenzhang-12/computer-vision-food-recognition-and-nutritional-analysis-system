@@ -21,7 +21,9 @@
 
 This personal project is a computer vision-based food health checker and sorting tool that classifies everyday food items (e.g. eggs, chocolate, bread, pizza, apples) and evaluates whether they are healthy or unhealthy. In addition to classification, it also displays key nutritional information per 100 grams, including calories, protein, carbohydrates, and fat. 
 
-This project uses a pre-trained teachable machine ([https://teachablemachine.withgoogle.com/train/image](url)) and live webcam input, the program analyzes the food item in real-time and displays the classification result, health assessment, and macros. This project demonstrates how AI can support health-conscious decision-making and raise awareness about everyday food choices.
+This project integrates text-to-speech (TTS) functionality so that whenever a new food item is detected, the system not only displays its nutritional details but also reads them aloud in real-time. For example, the tool will announce: “Detected: Apple. Health status: Healthy. Calories per 100 grams: 61. Fat: 0.15 grams. Carbohydrates: 14.8 grams. Protein: 0.13 grams.” This ensures users can receive instant auditory feedback while keeping their focus on the food item or camera feed, which can potentially help visually impaired individuals. 
+
+By using a pre-trained teachable machine ([https://teachablemachine.withgoogle.com/train/image](url)) and live webcam input, the program analyzes the food item in real-time and delivers both visual and auditory feedback on the classification result, health assessment, and macros. This project demonstrates how AI can support health-conscious decision-making and raise awareness about everyday food choices.
 
 
 **Motivation & Background**
@@ -81,6 +83,10 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 
   
 - h5py: model storage
+
+- pyttsx3: Text-to-speech (TTS) engine for reading out classification results and nutritional information in real-time
+
+- Threading & Queue: Enable non-blocking text-to-speech so the webcam feed continues running smoothly while speech is processed in parallel
 
 **Project Structure**
 ---
@@ -144,7 +150,7 @@ Per 100g
 Install packages before running the program
 
 ```bash
-pip install opencv-contrib-python numpy requests tensorflow pandas h5py
+pip install opencv-contrib-python numpy requests tensorflow pandas h5py pyttsx3 
 
 ```
 
