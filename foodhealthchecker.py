@@ -1,4 +1,4 @@
-# install libraries required for this classifier (opencv-contrib-python, numpy, requests, tensorflow, pandas)
+# install libraries required for this classifier (opencv-contrib-python, numpy, requests, tensorflow, pandas, pyttsx3, threading, queue)
 
 
 from keras.models import load_model  # tensorflow is required for Keras to work
@@ -6,6 +6,30 @@ import cv2
 import h5py # for reading HDF5 files
 import numpy as np # for numerical operations
 import pandas as pd # for data manipulation
+import pyttsx3 # for tts
+import threading, queue
+
+# Initialize TTS engine once
+tts_engine = pyttsx3.init()
+
+_speech_q = queue.Queue()
+
+def _tts_worker():
+    while True:
+        text = _speech_q.get()
+        if text is None:  # shutdown signal
+            break
+        try:
+            tts_engine.say(text)
+            tts_engine.runAndWait()
+        except Exception as e:
+            print("TTS error:", e)
+        finally:
+            _speech_q.task_done()
+
+_tts_thread = threading.Thread(target=_tts_worker, daemon=True)
+_tts_thread.start()
+
 
 # disabling scientific notation
 np.set_printoptions(suppress=True)
@@ -118,7 +142,7 @@ def predict_model(model, prediction_image):
     # Normalize pixel values to the range [-1, 1]
     image = (image / 127.5) - 1.0
     
-    # Make prediction
+     # Make prediction
     prediction = model.predict(image)
     
     # Get the index of the highest probability class
@@ -128,9 +152,8 @@ def predict_model(model, prediction_image):
     class_name = class_names[index].strip()  # Removing extra characters
     if " " in class_name:
         class_name = class_name.split(" ", 1)[1]  # drop the leading number
-
     
-    return class_name, 
+    return class_name
 
 def get_nutrition_info(food_categorization, class_name):
     
@@ -154,7 +177,27 @@ def get_nutrition_info(food_categorization, class_name):
         print("DEBUG: label not found ->", repr(class_name))
         return default_output
 
+def speak_nutrition (class_name, info):
+    text = (
+        f"{class_name}. "
+        f"Health status: {info['Health Status']}. "
+        f"Calories per 100 grams: {info['Calories (100g)']} kilocalories. "
+        f"Fat: {info['Fat (g)']} grams. "
+        f"Carbohydrates: {info['Carbs (g)']} grams. "
+        f"Protein: {info['Protein (g)']} grams."
+    )
 
+    # keep only the latest message so we don't queue old ones
+    while not _speech_q.empty():
+        try:
+            _speech_q.get_nowait()
+            _speech_q.task_done()
+        except queue.Empty:
+            break
+
+    
+    _speech_q.put(text)
+    
 
 def add_text_to_image(image, class_name, food_categorization):
     """
@@ -205,22 +248,36 @@ def add_text_to_image(image, class_name, food_categorization):
 
 camera = cv2.VideoCapture(0)    
 
+last_spoken = None # keep track of the last spoken class
+
+
+
 while True:
     # Capture frame from webcam
     ret, image = camera.read()
+    if not ret:
+        break
 
     # Resize frame for display
     image = cv2.resize(image, (640, 480), interpolation=cv2.INTER_AREA)
 
-    # Get prediction and confidence score
+    # Get prediction
     class_name = predict_model(model, image)
 
     # Print results to console
     print("Detected: ", class_name)
+
+    # only speak if its a new object
     
+    if class_name != last_spoken:
+        info = get_nutrition_info(food_categorization, class_name)
+        speak_nutrition(class_name, info)      
+        last_spoken = class_name
 
     
+    
     image = add_text_to_image(image, class_name, food_categorization)
+
 
     # Display annotated frame
     cv2.imshow("Food Nutrition Classification Tool", image)
@@ -232,4 +289,6 @@ while True:
 camera.release()
 cv2.destroyAllWindows()
 
-
+# stop TTS worker thread cleanly
+_speech_q.put(None)
+_tts_thread.join(timeout=2)
