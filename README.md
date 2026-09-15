@@ -79,7 +79,7 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 - NumPy: numerical operations
 
   
-- Pandas: Waste categorization
+- Pandas: Food categorization
 
   
 - h5py: model storage
@@ -94,7 +94,7 @@ foodhealthchecker.py # Python File with full workflow
 
 keras_model.h5 # pre-trained keras classification model (from teachable machine)
 
-labels.txt # Waste category labels
+labels.txt # Food category labels
 
 README.md # project documentation and summary
 
