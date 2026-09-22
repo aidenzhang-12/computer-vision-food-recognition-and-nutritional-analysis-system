@@ -1,6 +1,9 @@
 # install libraries required for this classifier (opencv-contrib-python, numpy, requests, tensorflow, pandas, pyttsx3, threading, queue)
 
-
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+import cv2
+import sys
 from keras.models import load_model  # tensorflow is required for Keras to work
 import cv2  
 import h5py # for reading HDF5 files
@@ -246,7 +249,10 @@ def add_text_to_image(image, class_name, food_categorization):
 
 
 
-camera = cv2.VideoCapture(0)    
+camera = cv2.VideoCapture(0)  
+if not camera.isOpened():
+    print("Could not open webcam. Please check camera connection or index")
+    sys.exit()
 
 last_spoken = None # keep track of the last spoken class
 
