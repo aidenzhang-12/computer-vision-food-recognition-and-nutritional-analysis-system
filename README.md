@@ -1,4 +1,4 @@
-# Computer Vision Food Health/Calorie Checker
+# Computer Vision Food Health/Nutritional Analysis System
 
 
 ## Table of Contents
