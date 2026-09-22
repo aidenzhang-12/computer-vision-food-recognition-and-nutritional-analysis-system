@@ -100,7 +100,7 @@ README.md # project documentation and summary
 
 Results # Screenshot of outputs and video 
 
-**NOTE keras_model.h5 and labels.txt should be in a folder called converted_keras_food when running code (the zip file)**
+**NOTE keras_model.h5 and labels.txt should be in a folder called converted_keras_food when running code, unzip the ZIP file (The ZIP file)**
 
 **How it Works**
 ---
