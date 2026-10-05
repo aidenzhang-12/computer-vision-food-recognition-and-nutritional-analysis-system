@@ -67,7 +67,7 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 **Tech Stack**
 ---
 
-- Python
+- Python 3.11
 
   
 - TensorFlow & Teachable Machine: Deep learning & machine learning
@@ -146,13 +146,68 @@ Per 100g
 
 
 **Installations**
----
-Install packages before running the program
+Requirements
 
-```bash
-pip install opencv-contrib-python numpy requests tensorflow pandas h5py pyttsx3 
+Python 3.11
 
-```
+Webcam
+
+Teachable Machine Keras model and labels.txt
+
+This project uses a Teachable Machine .h5 model. Python 3.11 with TensorFlow 2.15.1 and Keras 2.15.0 is recommended for compatibility with the exported model.
+
+1. Clone the Repository
+
+git clone https://github.com/aidenzhang-12/computer-vision-food-recognition-and-nutritional-analysis-system.git
+cd computer-vision-food-recognition-and-nutritional-analysis-system
+
+2. Create a Virtual Environment
+
+On Windows:
+
+py -3.11 -m venv .venv
+
+Activate the virtual environment:
+
+.\.venv\Scripts\Activate.ps1
+
+When activated, the terminal should show:
+
+(.venv)
+
+The virtual environment only needs to be created once. However, it must be activated again whenever a new terminal is opened.
+
+3. Install Dependencies
+
+Upgrade pip:
+
+python -m pip install --upgrade pip
+
+Install the TensorFlow/Keras versions used by the project:
+
+python -m pip install tensorflow==2.15.1 keras==2.15.0
+
+Install the remaining dependencies:
+
+python -m pip install opencv-contrib-python numpy pandas h5py pyttsx3
+
+4. Model Files
+
+The following Teachable Machine files are required:
+
+keras_model.h5
+labels.txt
+
+Place them in the location expected by foodhealthchecker.py.
+
+5. Run the Program
+
+Make sure the virtual environment is activated, then run:
+
+python foodhealthchecker.py
+
+Press Esc to close the webcam window and exit the program
+
 
 
 **Sources**
