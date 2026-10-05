@@ -102,39 +102,8 @@ Install the remaining dependencies:
 python -m pip install opencv-contrib-python numpy pandas h5py pyttsx3
 ```
 
-### 4. Configure Model Files
 
-The program requires the following Teachable Machine files:
-
-```text
-keras_model.h5
-labels.txt
-```
-
-Create a folder named:
-
-```text
-converted_keras_food
-```
-
-Place both files inside the folder:
-
-```text
-converted_keras_food/
-├── keras_model.h5
-└── labels.txt
-```
-
-The Python program currently expects the files at:
-
-```text
-C:\converted_keras_food\keras_model.h5
-C:\converted_keras_food\labels.txt
-```
-
-If your model files are stored somewhere else, update the corresponding file paths in `foodhealthchecker.py`.
-
-### 5. Run the Program
+### 4. Run the Program
 
 Make sure the virtual environment is activated:
 
