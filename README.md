@@ -67,26 +67,31 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 **Tech Stack**
 ---
 
-- Python 3.11
+- Python 3.11: Main programming language 
 
   
-- TensorFlow & Teachable Machine: Deep learning & machine learning
+- TensorFlow 2.15.1 / Keras 2.15.0 — Deep learning model inference
+
+
+- Google Teachable Machine — Image classification model training
+
+
+- OpenCV: Real-time webcam capture and computer vision 
 
   
-- OpenCV: Real-time computer vision and webcam usage
+- NumPy: Image and numerical processing
 
   
-- NumPy: numerical operations
+- Pandas: Food categorization and nutritional data management 
 
   
-- Pandas: Food categorization
+- h5py: Keras `.h5` model file handling
 
-  
-- h5py: model storage
 
-- pyttsx3: Text-to-speech (TTS) engine for reading out classification results and nutritional information in real-time
+- pyttsx3: Offline text-to-speech for classification and nutritional feedback
 
-- Threading & Queue: Enable non-blocking text-to-speech so the webcam feed continues running smoothly while speech is processed in parallel
+
+- Threading & Queue: Non-blocking text-to-speech so the webcam feed continues running while speech is processed
 
 **Project Structure**
 ---
@@ -145,68 +150,121 @@ Per 100g
 ---
 
 
-**Installations**
-Requirements
+## Installations
 
-Python 3.11
+### Requirements
 
-Webcam
+- **Python 3.11**
+- Webcam
+- Teachable Machine Keras model (`keras_model.h5`)
+- Food classification labels (`labels.txt`)
 
-Teachable Machine Keras model and labels.txt
+This project uses a Teachable Machine `.h5` model. **Python 3.11 with TensorFlow 2.15.1 and Keras 2.15.0** is recommended for compatibility with the exported model.
 
-This project uses a Teachable Machine .h5 model. Python 3.11 with TensorFlow 2.15.1 and Keras 2.15.0 is recommended for compatibility with the exported model.
+### 1. Clone the Repository
 
-1. Clone the Repository
-
+```bash
 git clone https://github.com/aidenzhang-12/computer-vision-food-recognition-and-nutritional-analysis-system.git
 cd computer-vision-food-recognition-and-nutritional-analysis-system
+```
 
-2. Create a Virtual Environment
+### 2. Create a Virtual Environment
 
-On Windows:
+Create a Python 3.11 virtual environment:
 
+```powershell
 py -3.11 -m venv .venv
+```
 
 Activate the virtual environment:
 
+```powershell
 .\.venv\Scripts\Activate.ps1
+```
 
-When activated, the terminal should show:
+When activated, the terminal should display:
 
+```text
 (.venv)
+```
 
-The virtual environment only needs to be created once. However, it must be activated again whenever a new terminal is opened.
+> **Note:** The virtual environment only needs to be created once. However, it must be activated again whenever a new terminal is opened.
 
-3. Install Dependencies
+### 3. Install Dependencies
 
-Upgrade pip:
+Upgrade `pip`:
 
+```powershell
 python -m pip install --upgrade pip
+```
 
-Install the TensorFlow/Keras versions used by the project:
+Install TensorFlow and Keras:
 
+```powershell
 python -m pip install tensorflow==2.15.1 keras==2.15.0
+```
 
 Install the remaining dependencies:
 
+```powershell
 python -m pip install opencv-contrib-python numpy pandas h5py pyttsx3
+```
 
-4. Model Files
+### 4. Configure Model Files
 
-The following Teachable Machine files are required:
+The program requires the following Teachable Machine files:
 
+```text
 keras_model.h5
 labels.txt
+```
 
-Place them in the location expected by foodhealthchecker.py.
+Create a folder named:
 
-5. Run the Program
+```text
+converted_keras_food
+```
 
-Make sure the virtual environment is activated, then run:
+Place both files inside the folder:
 
+```text
+converted_keras_food/
+├── keras_model.h5
+└── labels.txt
+```
+
+The Python program currently expects the files at:
+
+```text
+C:\converted_keras_food\keras_model.h5
+C:\converted_keras_food\labels.txt
+```
+
+If your model files are stored somewhere else, update the corresponding file paths in `foodhealthchecker.py`.
+
+### 5. Run the Program
+
+Make sure the virtual environment is activated:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Then run:
+
+```powershell
 python foodhealthchecker.py
+```
 
-Press Esc to close the webcam window and exit the program
+The program will:
+
+1. Load the trained Teachable Machine model
+2. Open the webcam
+3. Classify the detected food item
+4. Display its health status and nutritional information
+5. Read the nutritional information aloud using text-to-speech
+
+Press `Esc` while the webcam window is selected to close the program.
 
 
 
