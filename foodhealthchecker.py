@@ -84,9 +84,9 @@ assert model_config_string.find('"groups": 1,') == -1
 f.close()
 # Load the trained keras model from the specified file path
 # 'compile=False' is used here because we only need the model for inference (making predictions) not for further training. This speeds up loading and avoids loading optimizer state.
-model = h5py.File(
+model = load_model(
     MODEL_PATH,
-    mode="r+"
+    compile=False
 )
 
 model.summary()  # Display a detailed summary of the model architectureincluding each layer's name, output shape, and number of parameters.
