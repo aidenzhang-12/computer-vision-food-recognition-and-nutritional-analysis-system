@@ -5,7 +5,6 @@
 
 - [Overview](#overview)
 - [Demo / Example Output](#demo--example-output)
-- [Installation](#installation)
 - [Features](#features)
 - [How It Works](#how-it-works)
 - [Tech Stack](#tech-stack)
@@ -13,6 +12,7 @@
 - [Nutrition Data](#nutrition-data)
 - [Motivation & Background](#motivation--background)
 - [Future Improvements](#future-improvements)
+- [Installation](#installation)
 - [Sources](#sources)
 
 
@@ -40,85 +40,6 @@ Per 100g
 - Fat: 11.0
 - Carbs: 1.1
 - Protein: 13.0
-
-
-## Installation
-
-### Requirements
-
-- **Python 3.11**
-- Webcam
-- Teachable Machine Keras model (`keras_model.h5`)
-- Food classification labels (`labels.txt`)
-
-This project uses a Teachable Machine `.h5` model. **Python 3.11 with TensorFlow 2.15.1 and Keras 2.15.0** is recommended for compatibility with the exported model.
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/aidenzhang-12/computer-vision-food-recognition-and-nutritional-analysis-system.git
-cd computer-vision-food-recognition-and-nutritional-analysis-system
-```
-
-### 2. Create a Virtual Environment
-
-Create a Python 3.11 virtual environment:
-
-```powershell
-py -3.11 -m venv .venv
-```
-
-Activate the virtual environment:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-When activated, the terminal should display:
-
-```text
-(.venv)
-```
-
-> **Note:** The virtual environment only needs to be created once. However, it must be activated again whenever a new terminal is opened.
-
-### 3. Install Dependencies
-
-Upgrade `pip`:
-
-```powershell
-python -m pip install --upgrade pip
-```
-
-Install all required dependencies:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-### 4. Run the Program
-
-Make sure the virtual environment is activated:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Then run:
-
-```powershell
-python foodhealthchecker.py
-```
-
-The program will:
-
-1. Load the trained Teachable Machine model
-2. Open the webcam
-3. Classify the detected food item
-4. Display its health status and nutritional information
-5. Read the nutritional information aloud using text-to-speech
-
-Press `Esc` while the webcam window is selected to close the program.
 
 
 
@@ -253,6 +174,85 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 - Estimate serving sizes instead of displaying only per-100g values
 - Add a graphical user interface
 - Explore accessibility improvements for visually impaired users
+
+## Installation
+
+### Requirements
+
+- **Python 3.11**
+- Webcam
+- Teachable Machine Keras model (`keras_model.h5`)
+- Food classification labels (`labels.txt`)
+
+This project uses a Teachable Machine `.h5` model. **Python 3.11 with TensorFlow 2.15.1 and Keras 2.15.0** is recommended for compatibility with the exported model.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/aidenzhang-12/computer-vision-food-recognition-and-nutritional-analysis-system.git
+cd computer-vision-food-recognition-and-nutritional-analysis-system
+```
+
+### 2. Create a Virtual Environment
+
+Create a Python 3.11 virtual environment:
+
+```powershell
+py -3.11 -m venv .venv
+```
+
+Activate the virtual environment:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+When activated, the terminal should display:
+
+```text
+(.venv)
+```
+
+> **Note:** The virtual environment only needs to be created once. However, it must be activated again whenever a new terminal is opened.
+
+### 3. Install Dependencies
+
+Upgrade `pip`:
+
+```powershell
+python -m pip install --upgrade pip
+```
+
+Install all required dependencies:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+### 4. Run the Program
+
+Make sure the virtual environment is activated:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Then run:
+
+```powershell
+python foodhealthchecker.py
+```
+
+The program will:
+
+1. Load the trained Teachable Machine model
+2. Open the webcam
+3. Classify the detected food item
+4. Display its health status and nutritional information
+5. Read the nutritional information aloud using text-to-speech
+
+Press `Esc` while the webcam window is selected to close the program.
+
 
 ## License
 
