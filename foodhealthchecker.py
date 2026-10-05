@@ -1,6 +1,7 @@
 # install libraries required for this classifier (opencv-contrib-python, numpy, requests, tensorflow, pandas, pyttsx3, threading, queue)
 
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import cv2
 import sys
@@ -12,6 +13,21 @@ import pandas as pd # for data manipulation
 import pyttsx3 # for tts
 import threading, queue
 
+# Get the directory where this Python file is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Paths to the model and labels
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "converted_keras_food",
+    "keras_model.h5"
+)
+
+LABELS_PATH = os.path.join(
+    BASE_DIR,
+    "converted_keras_food",
+    "labels.txt"
+)
 # Initialize TTS engine once
 tts_engine = pyttsx3.init()
 
@@ -42,8 +58,10 @@ np.set_printoptions(suppress=True)
 # The system uses an cameras to identify waste type and suggest correct disposal. 
 # Built a prototype machine learning model for testing on sample waste images trained on [Teachable Machine](https://teachablemachine.withgoogle.com/train/image) model using photos of different types of waste.
 
-f = h5py.File(r"C:\converted_keras_food\keras_model.h5", mode="r+") # this is the path of the HDF5 file
-
+f = h5py.File(
+    MODEL_PATH,
+    mode="r+"
+)
 model_config_string = f.attrs.get("model_config") 
 
 # Model Training
@@ -63,11 +81,13 @@ f.flush()
 model_config_string = f.attrs.get("model_config") 
 
 assert model_config_string.find('"groups": 1,') == -1 
-
+f.close()
 # Load the trained keras model from the specified file path
 # 'compile=False' is used here because we only need the model for inference (making predictions) not for further training. This speeds up loading and avoids loading optimizer state.
-model = load_model(r"C:\converted_keras_food\keras_model.h5", compile=False) 
-
+model = h5py.File(
+    MODEL_PATH,
+    mode="r+"
+)
 
 model.summary()  # Display a detailed summary of the model architectureincluding each layer's name, output shape, and number of parameters.
 
@@ -75,7 +95,7 @@ model.summary()  # Display a detailed summary of the model architectureincluding
 # Load the list of class labels from the specified text file.
 # Each line in this file corresponds to a class index and its name (e.g., "0 Cardboard").
 # Using readlines() returns all lines as a list, which can be used for mapping model predictions to human-readable names.
-class_names = open(r"C:\converted_keras_food\labels.txt", "r").readlines()
+class_names = open(LABELS_PATH, "r").readlines()
 # Display the loaded class labels
 class_names
 
