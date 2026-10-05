@@ -254,6 +254,13 @@ To sum it up, this project uses computer vision and machine learning for nutriti
 - Add a graphical user interface
 - Explore accessibility improvements for visually impaired users
 
+## License
+
+Copyright © 2026. All rights reserved.
+
+This project is publicly available for portfolio and educational viewing purposes.
+
+No permission is granted to copy, modify, distribute, or reuse the source code.
 ## Sources
 
 Research for Motivations & Background: [https://www150.statcan.gc.ca/n1/pub/82-003-x/2025002/article/00002-eng.htm](url)
