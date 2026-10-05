@@ -90,18 +90,11 @@ Upgrade `pip`:
 python -m pip install --upgrade pip
 ```
 
-Install TensorFlow and Keras:
+Install all required dependencies:
 
 ```powershell
-python -m pip install tensorflow==2.15.1 keras==2.15.0
+python -m pip install -r requirements.txt
 ```
-
-Install the remaining dependencies:
-
-```powershell
-python -m pip install opencv-contrib-python numpy pandas h5py pyttsx3
-```
-
 
 ### 4. Run the Program
 
@@ -212,10 +205,10 @@ Press `Esc` while the webcam window is selected to close the program.
 computer-vision-food-recognition-and-nutritional-analysis-system/
 │
 ├── foodhealthchecker.py
+├── requirements.txt
 ├── converted_keras_food/
 │   ├── keras_model.h5
 │   └── labels.txt
-│
 └── README.md
 ```
 
